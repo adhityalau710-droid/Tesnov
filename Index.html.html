@@ -1,0 +1,975 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BLESSPHONE - Service HP Kendari</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    color: #222;
+    background: #fff;
+    line-height: 1.6;
+}
+
+:root {
+    --primary: #0756a5;
+    --secondary: #0b82d9;
+    --dark: #10243b;
+    --light: #f3f8fc;
+}
+
+a { text-decoration: none; }
+
+/* NAVBAR */
+header {
+    background: white;
+    padding: 15px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,.08);
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: bold;
+    color: var(--primary);
+}
+
+.logo span { color: var(--secondary); }
+
+nav {
+    display: flex;
+    gap: 25px;
+}
+
+nav a {
+    color: #333;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+nav a:hover { color: var(--secondary); }
+
+.menu-toggle {
+    display: none;
+    font-size: 26px;
+    cursor: pointer;
+    color: var(--primary);
+}
+
+/* HERO */
+.hero {
+    min-height: 520px;
+    padding: 100px 7%;
+    display: flex;
+    align-items: center;
+    background: linear-gradient(120deg, #073d78, #087cc5);
+    color: white;
+}
+
+.hero-content { max-width: 700px; }
+
+.hero h1 {
+    font-size: 48px;
+    line-height: 1.2;
+    margin-bottom: 20px;
+}
+
+.hero h1 span { color: #8bd4ff; }
+
+.hero p {
+    font-size: 17px;
+    margin-bottom: 30px;
+    color: #e8f4ff;
+}
+
+.button {
+    display: inline-block;
+    background: #fff;
+    color: var(--primary);
+    padding: 13px 25px;
+    border-radius: 7px;
+    font-weight: bold;
+    transition: .3s;
+}
+
+.button:hover {
+    background: #dceeff;
+    transform: translateY(-3px);
+}
+
+/* SECTION */
+section { padding: 75px 7%; }
+
+.section-title {
+    text-align: center;
+    margin-bottom: 45px;
+}
+
+.section-title h2 {
+    font-size: 32px;
+    color: var(--dark);
+    margin-bottom: 10px;
+}
+
+.section-title p { color: #777; }
+
+/* TENTANG */
+.about { background: var(--light); }
+
+.about-content {
+    max-width: 850px;
+    margin: auto;
+    text-align: center;
+}
+
+.about-content h3 {
+    color: var(--primary);
+    font-size: 25px;
+    margin-bottom: 15px;
+}
+
+/* LAYANAN */
+.services-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.service-card {
+    padding: 30px 22px;
+    text-align: center;
+    border-radius: 12px;
+    background: white;
+    box-shadow: 0 4px 18px rgba(0,0,0,.08);
+    transition: .3s;
+}
+
+.service-card:hover { transform: translateY(-7px); }
+
+.service-icon {
+    font-size: 42px;
+    margin-bottom: 15px;
+}
+
+.service-card h3 {
+    color: var(--primary);
+    margin-bottom: 10px;
+}
+
+.service-card p {
+    color: #666;
+    font-size: 14px;
+}
+
+/* KEUNGGULAN */
+.advantages { background: var(--light); }
+
+.advantages-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.advantage-card {
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.advantage-card h3 {
+    color: var(--primary);
+    margin: 12px 0;
+}
+
+/* ULASAN GOOGLE */
+.reviews { background: #fff; }
+
+.reviews .section-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.reviews .section-title.center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.reviews .subtitle {
+    color: var(--secondary);
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+}
+
+.reviews .section-title h2 {
+    margin-bottom: 16px;
+}
+
+/* RATING GOOGLE - KAPSUL BULAT MEMANJANG */
+.google-rating {
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 12px 24px;
+    margin-top: 5px;
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 50px;
+    box-shadow: 0 4px 15px rgba(0,0,0,.07);
+    transition: all .3s ease;
+    text-decoration: none;
+    max-width: 100%;
+}
+
+.google-rating:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 7px 20px rgba(0,0,0,.12);
+    border-color: #d1d5db;
+}
+
+.google-stars {
+    color: #fbbc04;
+    font-size: 19px;
+    letter-spacing: 2px;
+    line-height: 1;
+    white-space: nowrap;
+}
+
+.google-score {
+    color: #202124;
+    font-size: 19px;
+    font-weight: bold;
+    line-height: 1;
+    white-space: nowrap;
+}
+
+.google-score span {
+    font-size: 12px;
+    color: #777;
+    font-weight: normal;
+}
+
+.google-review-count {
+    color: #666;
+    font-size: 12px;
+    white-space: nowrap;
+}
+
+.google-label {
+    color: var(--primary);
+    font-size: 12px;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+/* KARTU KOMENTAR */
+.review-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 22px;
+}
+
+.review-card {
+    padding: 25px;
+    background: var(--light);
+    border: 1px solid #e5edf5;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,.05);
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.review-card .stars {
+    color: #f5a623;
+    margin-bottom: 12px;
+    font-size: 19px;
+    letter-spacing: 2px;
+}
+
+.review-card .review-text {
+    color: #555;
+    font-size: 14px;
+    white-space: pre-line;
+    overflow-wrap: anywhere;
+}
+
+.review-card h4 {
+    margin-top: 18px;
+    color: var(--primary);
+    font-size: 15px;
+}
+
+.review-date {
+    color: #888;
+    font-size: 12px;
+    margin-top: 3px;
+}
+
+.review-note {
+    text-align: center;
+    color: #777;
+    font-size: 14px;
+    margin-top: 30px;
+}
+
+.review-note a {
+    color: var(--primary);
+    font-weight: bold;
+}
+
+.review-note a:hover {
+    color: var(--secondary);
+    text-decoration: underline;
+}
+
+/* FAQ */
+.faq { background: var(--light); }
+
+.faq-container {
+    max-width: 800px;
+    margin: auto;
+}
+
+.faq-item {
+    background: white;
+    margin-bottom: 12px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.faq-question {
+    padding: 18px 20px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    color: var(--dark);
+}
+
+.faq-answer {
+    display: none;
+    padding: 0 20px 18px;
+    color: #666;
+    font-size: 14px;
+}
+
+.faq-item.active .faq-answer { display: block; }
+
+/* LOKASI */
+.location { background: white; }
+
+.location-container {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 35px;
+    align-items: stretch;
+}
+
+.location-info {
+    background: var(--light);
+    padding: 35px;
+    border-radius: 12px;
+}
+
+.location-info h3 {
+    color: var(--primary);
+    font-size: 25px;
+    margin-bottom: 20px;
+}
+
+.location-detail { margin-bottom: 20px; }
+
+.location-detail h4 {
+    color: var(--dark);
+    margin-bottom: 5px;
+}
+
+.location-detail p { color: #555; }
+
+.map {
+    min-height: 350px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,.1);
+}
+
+.map iframe {
+    width: 100%;
+    height: 100%;
+    min-height: 350px;
+    border: 0;
+}
+
+.location-button {
+    display: inline-block;
+    margin-top: 10px;
+    background: var(--primary);
+    color: white;
+    padding: 12px 20px;
+    border-radius: 6px;
+    font-weight: bold;
+}
+
+.location-button:hover { background: var(--secondary); }
+
+/* FOOTER */
+footer {
+    background: #10243b;
+    color: white;
+    padding: 40px 7% 20px;
+    text-align: center;
+}
+
+footer h2 { margin-bottom: 10px; }
+
+footer p {
+    color: #c5d2df;
+    font-size: 14px;
+}
+
+.footer-bottom {
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 1px solid #34485e;
+}
+
+/* WHATSAPP FLOAT */
+.whatsapp-float {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    background: #25d366;
+    color: white;
+    padding: 14px 20px;
+    border-radius: 50px;
+    font-weight: bold;
+    box-shadow: 0 4px 12px rgba(0,0,0,.2);
+    z-index: 999;
+}
+
+.whatsapp-float:hover { background: #1eae55; }
+
+/* RESPONSIVE TABLET */
+@media(max-width: 900px) {
+    .services-container,
+    .advantages-container,
+    .review-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .location-container { grid-template-columns: 1fr; }
+}
+
+/* RESPONSIVE HP */
+@media(max-width: 650px) {
+    header { padding: 15px 5%; }
+
+    .menu-toggle { display: block; }
+
+    nav {
+        display: none;
+        position: absolute;
+        top: 65px;
+        left: 0;
+        width: 100%;
+        background: white;
+        flex-direction: column;
+        padding: 20px 7%;
+        gap: 18px;
+        box-shadow: 0 5px 10px rgba(0,0,0,.08);
+    }
+
+    nav.active { display: flex; }
+
+    .hero {
+        padding: 75px 6%;
+        min-height: 430px;
+    }
+
+    .hero h1 { font-size: 34px; }
+
+    section { padding: 55px 6%; }
+
+    .section-title h2 { font-size: 26px; }
+
+    .services-container,
+    .advantages-container,
+    .review-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .location-info { padding: 25px; }
+
+    /* RATING KAPSUL DI HP */
+    .google-rating {
+        width: auto;
+        max-width: 100%;
+        padding: 11px 16px;
+        gap: 8px;
+        border-radius: 50px;
+    }
+
+    .google-stars {
+        font-size: 15px;
+        letter-spacing: 1px;
+    }
+
+    .google-score { font-size: 16px; }
+
+    .google-review-count { font-size: 11px; }
+
+    .google-label { font-size: 11px; }
+
+    .whatsapp-float {
+        bottom: 18px;
+        right: 15px;
+        padding: 12px 17px;
+    }
+}
+
+/* HP LAYAR KECIL */
+@media(max-width: 380px) {
+    .google-rating {
+        gap: 6px;
+        padding: 10px 12px;
+    }
+
+    .google-stars { font-size: 13px; }
+
+    .google-score { font-size: 14px; }
+
+    .google-review-count,
+    .google-label { font-size: 10px; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<header>
+    <div class="logo">BLESS<span>PHONE</span></div>
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+
+    <nav id="navbar">
+        <a href="#home" onclick="closeMenu()">Beranda</a>
+        <a href="#tentang" onclick="closeMenu()">Tentang</a>
+        <a href="#layanan" onclick="closeMenu()">Layanan</a>
+        <a href="#ulasan" onclick="closeMenu()">Ulasan</a>
+        <a href="#faq" onclick="closeMenu()">FAQ</a>
+        <a href="#lokasi" onclick="closeMenu()">Lokasi</a>
+    </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="home">
+    <div class="hero-content">
+        <h1>Solusi Terbaik untuk <span>Perbaikan Smartphone</span></h1>
+        <p>
+            Selamat datang di BLESSPHONE Kendari.
+            Kami menyediakan layanan perbaikan smartphone
+            dengan pelayanan profesional dan terpercaya.
+        </p>
+
+        <a href="https://wa.me/628193888837"
+           target="_blank"
+           rel="noopener noreferrer"
+           class="button">
+            Konsultasi Sekarang ↗
+        </a>
+    </div>
+</section>
+
+<!-- TENTANG -->
+<section class="about" id="tentang">
+    <div class="section-title">
+        <h2>Tentang BLESSPHONE</h2>
+        <p>Mengenal lebih dekat layanan kami</p>
+    </div>
+
+    <div class="about-content">
+        <h3>BLESSPHONE Kendari</h3>
+        <p>
+            BLESSPHONE merupakan tempat layanan perbaikan
+            smartphone yang berlokasi di Kota Kendari,
+            Sulawesi Tenggara. Kami hadir untuk membantu
+            pelanggan mengatasi berbagai permasalahan
+            pada perangkat smartphone dengan pelayanan
+            yang ramah dan profesional.
+        </p>
+    </div>
+</section>
+
+<!-- LAYANAN -->
+<section id="layanan">
+    <div class="section-title">
+        <h2>Layanan Kami</h2>
+        <p>Berbagai layanan perbaikan smartphone</p>
+    </div>
+
+    <div class="services-container">
+        <div class="service-card">
+            <div class="service-icon">📱</div>
+            <h3>Perbaikan LCD</h3>
+            <p>Layanan pemeriksaan dan perbaikan layar smartphone yang rusak.</p>
+        </div>
+
+        <div class="service-card">
+            <div class="service-icon">🔋</div>
+            <h3>Ganti Baterai</h3>
+            <p>Penanganan masalah baterai smartphone yang cepat habis atau mengalami kerusakan.</p>
+        </div>
+
+        <div class="service-card">
+            <div class="service-icon">🔌</div>
+            <h3>Perbaikan Charger</h3>
+            <p>Pemeriksaan dan perbaikan masalah pengisian daya smartphone.</p>
+        </div>
+
+        <div class="service-card">
+            <div class="service-icon">⚙️</div>
+            <h3>Perbaikan Software</h3>
+            <p>Penanganan berbagai permasalahan sistem dan perangkat lunak smartphone.</p>
+        </div>
+
+        <div class="service-card">
+            <div class="service-icon">🔧</div>
+            <h3>Perbaikan Hardware</h3>
+            <p>Pemeriksaan dan penanganan kerusakan komponen perangkat keras smartphone.</p>
+        </div>
+
+        <div class="service-card">
+            <div class="service-icon">💬</div>
+            <h3>Konsultasi</h3>
+            <p>Konsultasikan permasalahan smartphone Anda secara langsung melalui WhatsApp.</p>
+        </div>
+    </div>
+</section>
+
+<!-- KEUNGGULAN -->
+<section class="advantages">
+    <div class="section-title">
+        <h2>Mengapa Memilih Kami?</h2>
+        <p>Komitmen kami dalam memberikan pelayanan</p>
+    </div>
+
+    <div class="advantages-container">
+        <div class="advantage-card">
+            <div class="service-icon">⭐</div>
+            <h3>Pelayanan Ramah</h3>
+            <p>Memberikan pelayanan yang baik kepada setiap pelanggan.</p>
+        </div>
+
+        <div class="advantage-card">
+            <div class="service-icon">🛠️</div>
+            <h3>Penanganan Profesional</h3>
+            <p>Membantu menangani permasalahan smartphone sesuai kebutuhan.</p>
+        </div>
+
+        <div class="advantage-card">
+            <div class="service-icon">📍</div>
+            <h3>Lokasi Strategis</h3>
+            <p>Berlokasi di Kota Kendari dan dapat ditemukan melalui Google Maps.</p>
+        </div>
+    </div>
+</section>
+
+<!-- ULASAN PELANGGAN GOOGLE -->
+<section class="reviews" id="ulasan">
+    <div class="section-container">
+
+        <div class="section-title center">
+            <p class="subtitle">ULASAN PELANGGAN</p>
+            <h2>Kata Mereka Tentang Kami</h2>
+
+            <!-- RATING GOOGLE MAPS BLESSPHONE -->
+            <a href="https://maps.app.goo.gl/jEGWhhcStVHXYu527"
+               target="_blank"
+               rel="noopener noreferrer"
+               class="google-rating"
+               aria-label="Lihat rating dan ulasan BLESSPHONE di Google Maps">
+
+                <div class="google-stars">★★★★★</div>
+
+                <div class="google-score">
+                    4,8 dari Google Review
+                    
+                </div>
+
+                <!-- <div class="google-review-count">
+                    71 Ulasan Google
+                </div> -->
+
+                <!-- <div class="google-label">
+                    Lihat Ulasan ↗
+                </div> -->
+
+            </a>
+        </div>
+
+        <!-- KOMENTAR PELANGGAN -->
+        <div class="review-grid" id="reviewGrid">
+
+            <div class="review-card">
+                <div class="stars" aria-label="5 dari 5 bintang">
+                    ★★★★★
+                </div>
+
+                <p class="review-text">
+                    sudah di cek di toko servis iphone lain katanya mesinnya sudah tidak bisa diperbaiki,di rekomendasi teman kantor bawa service di blessphone ,awalnya ragu tempatnya kecil ,eh tau nya cuma di tinggal pagi sampai sore udah normal kembali
+                    Rekomendasi nih servis iphone di kendari
+                </p>
+
+                <h4>Firda Yani</h4>
+                <small class="review-date">3 tahun yang lalu</small>
+            </div>
+
+              <div class="review-card">
+                <div class="stars" aria-label="5 dari 5 bintang">
+                    ★★★★★
+                </div>
+
+                <p class="review-text">
+                    Udah keliling tempat service iPhone di Kolaka, bau bau dan Kendari katanya udh gak bisa nyala iPhone saya,bawa disini cuma sehari doang udah beres.
+                    Saya rekomendasi sekali service iPhone di Kendari di sini. Makasih blessphone udah beri layanan terbaik.mudahmudahan gak ada kendala hp nya.
+                </p>
+
+                <h4>iwan ajah</h4>
+                <small class="review-date">2 Tahun yang lalu</small>
+            </div>
+
+
+              <div class="review-card">
+                <div class="stars" aria-label="5 dari 5 bintang">
+                    ★★★★★
+                </div>
+
+                <p class="review-text">
+                    Top service iPhone di Kendari,kerjanya cepat janjinya 3 hari selesai ,eh baru 1 hari udah kelar.makasih mas nya
+                </p>
+
+                <h4>iwan dewi</h4>
+                <small class="review-date">2 Tahun yang lalu</small>
+            </div>
+
+
+
+
+
+        </div>
+
+        <p class="review-note">
+            Lihat ulasan dan komentar pelanggan BLESSPHONE secara langsung melalui Google Maps.
+            <br>
+            <a href="https://maps.app.goo.gl/jEGWhhcStVHXYu527"
+               target="_blank"
+               rel="noopener noreferrer">
+                Buka Semua Ulasan Google Maps ↗
+            </a>
+        </p>
+
+    </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq" id="faq">
+    <div class="section-title">
+        <h2>Pertanyaan Umum</h2>
+        <p>Informasi yang sering ditanyakan pelanggan</p>
+    </div>
+
+    <div class="faq-container">
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">
+                Di mana lokasi BLESSPHONE?
+                <span>+</span>
+            </div>
+            <div class="faq-answer">
+                BLESSPHONE berlokasi di Jl. Raden Soeprapto
+                No.184 (Perempatan Pendakian Wayong), Kendari,
+                Sulawesi Tenggara.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">
+                Bagaimana cara menghubungi BLESSPHONE?
+                <span>+</span>
+            </div>
+            <div class="faq-answer">
+                Anda dapat menghubungi BLESSPHONE melalui
+                tombol Konsultasi WhatsApp yang tersedia
+                pada website ini.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">
+                Apakah bisa konsultasi sebelum servis?
+                <span>+</span>
+            </div>
+            <div class="faq-answer">
+                Ya, pelanggan dapat melakukan konsultasi
+                terlebih dahulu melalui WhatsApp.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">
+                Bagaimana cara menemukan lokasi toko?
+                <span>+</span>
+            </div>
+            <div class="faq-answer">
+                Anda dapat melihat peta Google Maps
+                pada bagian lokasi website ini.
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- LOKASI -->
+<section class="location" id="lokasi">
+    <div class="section-title">
+        <h2>Lokasi BLESSPHONE</h2>
+        <p>Temukan lokasi toko kami melalui Google Maps</p>
+    </div>
+
+    <div class="location-container">
+
+        <div class="location-info">
+            <h3>BLESSPHONE Kendari</h3>
+
+            <div class="location-detail">
+                <h4>📍 Alamat</h4>
+                <p>
+                    Jl. Raden Soeprapto No.184
+                    (Perempatan Pendakian Wayong),
+                    Kendari, Sulawesi Tenggara.
+                </p>
+            </div>
+
+            <div class="location-detail">
+                <h4>📞 WhatsApp</h4>
+                <p>628193888837</p>
+            </div>
+
+            <div class="location-detail">
+                <h4>🌐 Lokasi Digital</h4>
+                <p>
+                    Lihat lokasi BLESSPHONE secara langsung
+                    melalui Google Maps.
+                </p>
+            </div>
+
+            <a href="https://www.google.com/maps?q=-3.9644863,122.5052493"
+               target="_blank"
+               rel="noopener noreferrer"
+               class="location-button">
+                Petunjuk Arah ↗
+            </a>
+        </div>
+
+        <div class="map">
+            <iframe
+                src="https://www.google.com/maps?q=-3.9644863,122.5052493&z=17&output=embed"
+                loading="lazy"
+                allowfullscreen
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+        </div>
+
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <h2>BLESSPHONE</h2>
+    <p>
+        Solusi layanan perbaikan smartphone
+        di Kota Kendari, Sulawesi Tenggara.
+    </p>
+
+    <div class="footer-bottom">
+        <p>© 2026 BLESSPHONE. All Rights Reserved.</p>
+    </div>
+</footer>
+
+<!-- WHATSAPP FLOAT -->
+<a href="https://wa.me/628193888837"
+   target="_blank"
+   rel="noopener noreferrer"
+   class="whatsapp-float">
+    WhatsApp ↗
+</a>
+
+<!-- JAVASCRIPT -->
+<script>
+
+// MENU NAVIGASI
+function toggleMenu() {
+    document.getElementById("navbar").classList.toggle("active");
+}
+
+function closeMenu() {
+    document.getElementById("navbar").classList.remove("active");
+}
+
+// FAQ
+function toggleFaq(element) {
+    const item = element.parentElement;
+    const isActive = item.classList.contains("active");
+
+    document.querySelectorAll(".faq-item").forEach(function(faq) {
+        faq.classList.remove("active");
+        faq.querySelector(".faq-question span").textContent = "+";
+    });
+
+    if (!isActive) {
+        item.classList.add("active");
+        element.querySelector("span").textContent = "−";
+    }
+}
+
+// LINK ULASAN GOOGLE MAPS
+const LINK_ULASAN_GOOGLE =
+    "https://maps.app.goo.gl/jEGWhhcStVHXYu527";
+
+// TAHUN FOOTER OTOMATIS
+const tahunSekarang = new Date().getFullYear();
+const footerText = document.querySelector(".footer-bottom p");
+
+if (footerText) {
+    footerText.textContent =
+        "© " + tahunSekarang + " BLESSPHONE. All Rights Reserved.";
+}
+
+</script>
+
+</body>
+</html>
